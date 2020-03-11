@@ -13,7 +13,7 @@ void shape :: draw(basic& a, int r, int b, int g)
 
 	Pen pen(Color(255, r, b, g));
 
-	a._draw(pen, graphics);
+	a._draw(pen, graphics);e
 
 	mio(gdiplusToken);
 }
@@ -35,7 +35,7 @@ void shape :: muve(basic& a, int f)
 	draw(a);
 }
 
-void shape::rotate(basic2& shap, int o)
+void shape::rotate(basic& shap, int o)
 {
 	shap._turn(o);
 }

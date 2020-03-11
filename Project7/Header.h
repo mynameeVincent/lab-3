@@ -8,20 +8,15 @@
 
 using namespace Gdiplus;
 using namespace std;
-
-class basic 
+class basic			
 {
+	double turn;
 public:
+	Point ce;
 	virtual void _draw(Pen& a, Graphics& graphics) = 0;
 	virtual void _hide() = 0;
 	virtual void _muve(int x, int y) = 0;
 	virtual void _muv(int x) = 0;
-};
-
-class basic2
-{
-	double turn;
-public:
 	virtual void _turn(int x) = 0;
 	double getT()
 	{
@@ -32,6 +27,23 @@ public:
 		turn = a;
 	}
 };
+
+//class basic2
+//{
+//	
+//	double turn;
+//public:
+//
+//	virtual void _turn(int x) = 0;
+//	double gett()
+//	{
+//		return turn;
+//	}
+//	void sett(double a)
+//	{
+//		turn = a;
+//	}
+//};
 
 class point : public basic
 {
@@ -50,13 +62,14 @@ public:
 	void _muv(int x);
 	void _draw(Pen& a, Graphics& graphics);
 	virtual void _hide();
+
+	void _turn(int o){}
 };
 
-class rec : public point, public basic2
+class rec : public point
 {
 protected:
 	Point p[8];
-	Point ce;
 public:
 	rec(int x = 50, int y = 50, int h = 100, int w = 100);
 	rec(point* i);	
@@ -67,7 +80,7 @@ public:
 	void _turn(int o);
 };
 
-class triangle : public point, public basic2
+class triangle : public point
 {
 protected:
 	Point p[6];
@@ -80,10 +93,10 @@ public:
 	void _turn(int o);
 };
 
-class line : public point, public basic2
+class line : public point
 {
 protected:
-	Point p[4], ce;
+	Point p[4];
 public:
 	line(point p1, point p2);
 	line(int x1, int y1, int x2, int y2);
@@ -101,7 +114,7 @@ public:
 	void hide(basic& a);
 	void muveTO(basic& a, int x, int y);
 	void muve(basic& a, int f);
-	void rotate(basic2& shap, int o);
+	void rotate(basic& shap, int o);
 };
 
 class shap
@@ -120,6 +133,7 @@ public:
 	int getN();
 	void draw(int n);
 	void plus_();
+	void rotate_(int n, bool rorl);
 	void hide_(int u);
 	void muve_(int n);
 };
@@ -129,56 +143,20 @@ void mio(ULONG_PTR& gdiplusToken);
 point tur(point y, double x);
 
 
-class agr:public basic, public basic2
+class agr:public basic
 {
 protected:
 	int M;
 	basic** yo;
-	void setM(int M)
-	{
-		this->M = M;
-	}
+	void setM(int M);
 public:
-	void getM(int M)
-	{
-		this->M = M;
-	}
-	agr(basic **oop,int n)
-	{
-		yo = new basic*[n];
-		this->M = n;
-		yo = oop;
-	}
-	void _draw(Pen& a, Graphics& graphics) override
-	{
-		shape I;
-		for (int f = 0; f < M; f++)
-		{
-			I.draw(*yo[f], 0, 0, 255);
-		}
-	}
+	void getM(int M);
+	agr(basic** oop, int n);
+	void _draw(Pen& a, Graphics& graphics) override;
 
-	void _hide() override
-	{
-		for (int f = 0; f < M; f++)
-		{
-			yo[f]->_hide();
-		}
-	}
-	void _muve(int x, int y) override
-	{
-		for (int f = 0; f < M; f++)
-		{
-			yo[f]->_muve(x,y);
-		}
-	}
-	void _muv(int x) override
-	{
-		for (int f = 0; f < M; f++)
-		{
-			yo[f]->_muv(x);
-		}
-	}
+	void _hide() override;
+	void _muve(int x, int y) override;
+	void _muv(int x) override;
 	void _turn(int x) override
 	{
 

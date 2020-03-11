@@ -71,10 +71,10 @@ void line ::_muv(int x)
 	case 3:
 	{
 		ce.X -= 5;
-		this->p[0].X += 5;
-		this->p[1].X += 5;
-		this->p[2].X += 5;
-		this->p[3].X += 5;
+		this->p[0].X -= 5;
+		this->p[1].X -= 5;
+		this->p[2].X -= 5;
+		this->p[3].X -= 5;
 		break;
 	}
 	default:

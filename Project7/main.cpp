@@ -3,12 +3,12 @@
 
 
 
-int main() 
+int main()
 {
 	bla_bla_bla();
 
 	shap j;
-		
+
 	j.plus_();
 	for (int f = 0; f < 30; f++)
 		j.muve_(1);
@@ -17,7 +17,13 @@ int main()
 	j.plus_();
 	for (int f = 0; f < 30; f++)
 		j.muve_(3);
-
+	j.rotate_(2, 1);
 	_getch();
+	_getch();
+	_getch();
+	_getch();
+	_getch();
+	_getch();
+
 	return 0;
 }

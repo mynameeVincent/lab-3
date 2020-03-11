@@ -19,6 +19,8 @@ void point::setY(int y)
 
 point::point(int x, int y)
 {
+	ce.X = x;
+	ce.Y = y;
 	this->x = x;
 	this->y = y;
 }

@@ -128,3 +128,12 @@ void shap::muve_(int n)
 		break;
 	}
 }
+
+void shap::rotate_(int n, bool rorl)
+{
+	if (rorl == 1)
+	{
+		U.rotate(*f[n], 5);
+		U.draw(*f[n]);
+	}
+}

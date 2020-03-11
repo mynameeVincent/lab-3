@@ -13,7 +13,7 @@ void shape :: draw(basic& a, int r, int b, int g)
 
 	Pen pen(Color(255, r, b, g));
 
-	a._draw(pen, graphics);e
+	a._draw(pen, graphics);
 
 	mio(gdiplusToken);
 }

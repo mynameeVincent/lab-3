@@ -35,6 +35,39 @@ void basic::_muve(int x, int y)
 	}
 }
 
+void basic::_turn(int o)
+{
+	setT(getT() + o);
+
+	while (1)
+	{
+		if (getT() >= 360)
+		{
+			setT(getT() - 360);
+		}
+		else
+		{
+			break;
+		}
+	}
+
+	for (int f = 0; f < getNn(); f++)
+	{
+		p[f] = p[f + getNn()];
+	}
+
+	point* D = new point[getNn()];
+	for (int f = 0; f < getNn(); f++)
+	{
+		D[f].setX(this->p[f].X - this->ce.X);
+		D[f].setY(this->p[f].Y - this->ce.Y);
+		D[f] = tur(D[f], getT());
+		p[f].X = D[f].getX() + this->ce.X;
+		p[f].Y = D[f].getY() + this->ce.Y;
+	}
+	delete[] D;
+}
+
 void basic::_muv(int x)
 {
 	switch (x)

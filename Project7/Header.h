@@ -27,7 +27,7 @@ public:
 	virtual void _hide();
 	virtual void _muve(int x, int y);
 	virtual void _muv(int x);
-	virtual void _turn(int x) = 0;
+	virtual void _turn(int x);
 	double getT()
 	{
 		return turn;
@@ -58,14 +58,12 @@ class rec:public basic
 public:
 	rec(int x = 50, int y = 50, int h = 100, int w = 100);
 	rec(point* i);	
-	void _turn(int o);
 };
 
 class triangle : public basic
 {
 public:
 	triangle(point p1, point p2, point p3);
-	void _turn(int o);
 };
 
 class line : public basic
@@ -73,7 +71,6 @@ class line : public basic
 public:
 	line(point p1, point p2);
 	line(int x1, int y1, int x2, int y2);
-	void _turn(int o);
 };
 
 class shape

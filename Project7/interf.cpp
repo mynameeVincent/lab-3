@@ -1,6 +1,5 @@
 #include"Header.h"
 
-
 void shape :: draw(basic& a, int r, int b, int g)
 {
 	GdiplusStartupInput gdiplusStartupInput;

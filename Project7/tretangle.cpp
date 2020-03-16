@@ -1,8 +1,5 @@
 #include"Header.h"
 
-
-
-
 triangle::triangle(point p1, point p2, point p3)
 {
 	setNn(3);
@@ -21,43 +18,4 @@ triangle::triangle(point p1, point p2, point p3)
 	p[5] = p[2];
 
 	this->setT(0);
-}
-
-
-
-
-
-void triangle::_turn(int o)
-{
-	while (1)
-	{
-		if (o < 360)
-		{
-			break;
-		}
-		else
-		{
-			o -= 360;
-		}
-	}
-
-	point d[3];
-	double hi = this->getT() + o;
-	if (hi >= 360)
-	{
-		o = hi - 360;
-		this->setT(0);
-		p[1] = p[4];
-		p[2] = p[5];
-	}
-
-	for (int f = 1; f < 3; f++)
-	{
-		d[f].setX(this->p[f].X - this->p[0].X);
-		d[f].setY(this->p[f].Y - this->p[0].Y);
-		d[f] = tur(d[f], o);
-		p[f].X = d[f].getX() + this->p[0].X;
-		p[f].Y = d[f].getY() + this->p[0].Y;
-	}
-	this->setT(o + this->getT());
 }

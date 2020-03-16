@@ -8,6 +8,7 @@ int main()
 	bla_bla_bla();
 
 	shap j;
+	shape tt;
 
 	j.plus_();
 	for (int f = 0; f < 30; f++)
@@ -17,13 +18,10 @@ int main()
 	j.plus_();
 	for (int f = 0; f < 30; f++)
 		j.muve_(3);
-	j.rotate_(2, 1);
-	_getch();
-	_getch();
-	_getch();
-	_getch();
-	_getch();
-	_getch();
+
+	char imor=0;
+	while(imor!='-')
+		imor=_getch();
 
 	return 0;
 }

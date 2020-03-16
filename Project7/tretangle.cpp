@@ -5,6 +5,8 @@
 
 triangle::triangle(point p1, point p2, point p3)
 {
+	setNn(3);
+	p = new Point[6];
 	this->p[0].X = p1.getX();
 	this->p[0].Y = p1.getY();
 	this->p[1].X = p2.getX();
@@ -20,82 +22,10 @@ triangle::triangle(point p1, point p2, point p3)
 
 	this->setT(0);
 }
-void triangle::_muve(int x, int y)
-{
-	int x1, y1;
-	this->_hide();
-	x1 = x - p[0].X;
-	y1 = y - p[0].Y;
-	p[0].X = x;
-	p[0].Y = y;
-	p[1].X += x1;
-	p[1].Y += y1;
-	p[2].X += x1;
-	p[2].Y += y1;
-
-	p[3] = p[0];
-	p[4] = p[1];
-	p[5] = p[2];
-}
 
 
-void triangle::_muv(int x)
-{
-	switch (x)
-	{
-	case 0:
-	{
-		p[0].Y += 5;
-		p[1].Y += 5;
-		p[2].Y += 5;
-		break;
-	}
-	case 1:
-	{
-		p[0].Y -= 5;
-		p[1].Y -= 5;
-		p[2].Y -= 5;
-		break;
-	}
-	case 2:
-	{
-		p[0].X += 5;
-		p[1].X += 5;
-		p[2].X += 5;
-		break;
-	}
-	case 3:
-	{
-		p[0].X -= 5;
-		p[1].X -= 5;
-		p[2].X -= 5;
-		break;
-	}
-	default:
-	{
-		cout << "fatal error you can't muve triangle";
-		break;
-	}
-	}
-	p[3] = p[0];
-	p[4] = p[1];
-	p[5] = p[2];
-}
-void triangle::_hide()
-{
-	GdiplusStartupInput gdiplusStartupInput;
-	ULONG_PTR           gdiplusToken;
-	GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
-	HWND hWnd = GetConsoleWindow();
-	HDC hdc = GetDC(hWnd);
-	Graphics graphics(hdc);
-	Pen pen(Color(255, 12, 12, 12));
-	graphics.DrawPolygon(&pen, p, 3);
-}
-void triangle::_draw(Pen& a, Graphics& graphics)
-{
-	graphics.DrawPolygon(&a, p, 3);
-}
+
+
 
 void triangle::_turn(int o)
 {

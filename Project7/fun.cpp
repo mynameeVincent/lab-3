@@ -16,7 +16,6 @@ point tur(point y, double x)
 	return mi;
 }
 
-
 void bla_bla_bla()
 {
 
@@ -29,14 +28,8 @@ void bla_bla_bla()
 	Sleep(30);
 }
 
-
-
-
-
 void mio(ULONG_PTR &gdiplusToken)
 {
 	if (!gdiplusToken)
 		GdiplusShutdown(gdiplusToken);
 }
-
-

@@ -26,6 +26,7 @@ rec::rec(point* i)
 
 	this->setT(0);
 }
+
 rec::rec(int x, int y, int h, int w)
 {
 	setNn(8);

@@ -8,6 +8,7 @@
 
 using namespace Gdiplus;
 using namespace std;
+
 class basic			
 {
 	double turn;
@@ -104,11 +105,6 @@ public:
 	void muve_(int n);
 };
 
-void bla_bla_bla();
-void mio(ULONG_PTR& gdiplusToken);
-point tur(point y, double x);
-
-
 class agr:public basic
 {
 protected:
@@ -125,3 +121,7 @@ public:
 	void _muv(int x) override;
 	void _turn(int x) override;
 };
+
+void bla_bla_bla();
+void mio(ULONG_PTR& gdiplusToken);
+point tur(point y, double x);

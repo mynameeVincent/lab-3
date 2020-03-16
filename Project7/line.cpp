@@ -11,6 +11,7 @@ line::line(point p1, point p2)
 	p[2] = p[0];
 	p[3] = p[1];
 }
+
 line::line(int x1, int y1, int x2, int y2)
 {
 	setNn(2);

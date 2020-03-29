@@ -1,15 +1,15 @@
 #include"Header.h"
 
-void draw(basic& a)
+void shape :: draw(basic& a, int r, int b, int g)
 {
 	GdiplusStartupInput gdiplusStartupInput;
 	ULONG_PTR           gdiplusToken;
 	GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 	HWND hWnd = GetConsoleWindow();
 	HDC hdc = GetDC(hWnd);
+
 	Graphics graphics(hdc);
-	int r, b, g;
-	a.pin.getpen(r, b, g);
+
 	Pen pen(Color(255, r, b, g));
 
 	a._draw(pen, graphics);
@@ -17,44 +17,24 @@ void draw(basic& a)
 	mio(gdiplusToken);
 }
 
-void hide(basic& a)
+void shape::hide(basic& a)
 {
 	a._hide();
 }
 
-void muveTO(basic& a, int x, int y)
+void shape::muveTO(basic& a, int x, int y)
 {
 	a._muve(x, y);
 }
 
-void muve(basic& a, int f, bool sl)
+void shape :: muve(basic& a, int f)
 {
 	hide(a);
-	a._muv(f,sl);
+	a._muv(f);
 	draw(a);
 }
 
-
-bool maybe(basic& gg)
+void shape::rotate(basic& shap, int o)
 {
-	return gg.mat_i_become_big();
+	shap._turn(o);
 }
-
-void change_color(basic& gg)
-{
-	gg.pin.chengecol();
-}
-
-void SetCur(int x, int y)
-{
-	COORD position = { x,y };
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleCursorPosition(hConsole, position);
-}
-
-void SetColor(int text)
-{
-	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hStdOut, (WORD)(text));
-}
-

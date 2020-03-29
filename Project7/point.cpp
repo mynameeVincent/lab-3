@@ -19,19 +19,21 @@ void point::setY(int y)
 
 point::point(int x, int y)
 {
-	pin.setpen();
-	p = new Point[2];
-	setNn(1);
+	p = new Point[4];
+	setNn(4);
 	ce.X = x;
 	ce.Y = y;
 	this->p[0].X = x;
 	this->p[0].Y = y;
-	this->p[1].X = x;
+	this->p[1].X = x + 1;
 	this->p[1].Y = y;
+	this->p[2].X = x + 1;
+	this->p[2].Y = y + 1;
+	this->p[3].X = x;
+	this->p[3].Y = y + 1;
 }
 point::point(const point& a)
 {
-	pin.setpen();
 	p = new Point[1];
 	setNn(1);
 	this->p[0] = a.p[0];
@@ -45,22 +47,6 @@ void point::_muve(int x, int y)
 	this->p[0].Y = y;
 }
 
-void point::_draw(Pen& a, Graphics& graphics)
-{
-	graphics.DrawRectangle(&a,p[0].X, p[0].Y, 1, 1);
-}
-
-void point::_hide()
-{
-	GdiplusStartupInput gdiplusStartupInput;
-	ULONG_PTR           gdiplusToken;
-	GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
-	HWND hWnd = GetConsoleWindow();
-	HDC hdc = GetDC(hWnd);
-	Graphics graphics(hdc);
-	Pen a(Color(255, 12, 12, 12));
-	graphics.DrawRectangle(&a, p[0].X, p[0].Y, 1, 1);
-}
 
 void point :: operator = (const point& a)
 {

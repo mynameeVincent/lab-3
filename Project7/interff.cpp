@@ -1,21 +1,20 @@
 #include"Header.h"
-#include<vector>
 
-shape::shape()
+shap::shap()
 {
 	N = 0;
 }
 
-int shape :: getN()
+int shap :: getN()
 {
 	return N;
 }
-void shape::draw_(int n)
+void shap::draw(int n)
 {
 	if (n <= N && n > 0)
-		draw(*f[n - 1]);
+		U.draw(*f[n - 1]);
 }
-void shape::plus_()
+void shap::plus_()
 {
 	char numb = 0;
 
@@ -61,61 +60,16 @@ void shape::plus_()
 			break;
 		}
 
-		case '9':							/////////////////////////////////////////////////chenge me
+		case '9':
 		{
-			users look;
-			look.Pluas_agr();
-			char op = 0;
-			vector<bool> numb(10);
-			op = _getch();
-			int how = 0;
-			while (op != 13 && op != 10 && op != ' ')
-			{
-				SetCur(0, 15);
-				if (numb[op - '0'])
-				{
-					numb[op - '0'] = 0;
-					how--;
-				}
-				else
-				{
-					numb[op - '0'] = 1;
-					how++;
-				}
-				for (int f = 0; f < 10; f++)
-				{
-					cout << numb[f] << "  ";
-				}
-				while (1)
-				{
-					op = _getch();
-					if (op <= '9' && op >= '0' || op == 13 || op == 10 || op==27 ||op == ' ')
-					{
-						break;
-					}
-				}
-			}
-			basic **V=new basic*[how];
-			int fff = 0;
-			for (int ff = 0; ff < getN(); ff++)
-			{
-				if (numb[ff] == 1)
-				{
-					V[fff] = &copy(*f[ff]);
-					fff++;
-				}
-			}
-			if (fff == 0)
-			{
-				look.newname();
-				break;
-			}
+			basic **V=new basic*[2];
+			V[0] = f[0];
+			V[1] = f[1];
 
-			agr* d = new agr(V, fff);
+			agr *d=new agr(V,2);
 			ADD(*d);
 			sad = 1;
 			cout << "hi";
-
 			break;
 		}
 		case 27:
@@ -125,62 +79,49 @@ void shape::plus_()
 
 		default:
 		{
+			cout << "select 0-9";
 			break;
 		}
 		}
 		if (sad == 1)
 			break;
 	}
-
-	draw_(N);
-	users look;
-	look.congr();
+	draw(N);
 }
 
-void shape::hide_(int u)
+void shap::hide_(int u)
 {
-	f[u]->_hide();
-	delete f[u];
-	for (int ff = u; ff < getN() - 1; ff++)
+	f[u - 1]->_hide();
+	delete[] f[u - 1];
+	for (int ff = u - 1; ff < N - 1; ff++)
 		f[ff] = f[ff + 1];
-	setN(getN()-1);
 }
 
-void shape::compil_sup()
-{
-	for (int f = 0; f < getN() + 1; f++)
-	{
-		draw_(f);
-	}
-}
 
-void shape::muve_(int n, char mi, bool sl)
+void shap::muve_(int n)
 {
-	
+	char mi;
+	mi = _getch();
 	switch (mi)
 	{
 	case 'w':
 	{
-		if ((*f[n]).may_i_muve(2))
-			muve(*f[n], 1, sl);
+		U.muve(*f[n - 1], 1);
 		break;
 	}
 	case 's':
 	{
-		if ((*f[n]).may_i_muve(4))
-			muve(*f[n], 0, sl);
+		U.muve(*f[n - 1], 0);
 		break;
 	}
 	case 'd':
 	{
-		if ((*f[n]).may_i_muve(3))
-			muve(*f[n], 2, sl);
+		U.muve(*f[n - 1], 2);
 		break;
 	}
 	case 'a':
 	{
-		if ((*f[n]).may_i_muve(1))
-			muve(*f[n], 3, sl);
+		U.muve(*f[n - 1], 3);
 		break;
 	}
 	default:
@@ -188,27 +129,16 @@ void shape::muve_(int n, char mi, bool sl)
 	}
 }
 
-void shape::rotate_(int n, bool rorl)
+void shap::rotate_(int n, bool rorl)
 {
-	if (rorl == 0)
+	if (rorl == 1)
 	{
-		f[n]->_turn(5, 1);
+		f[n]->_turn(5);
+		U.draw(*f[n]);
 	}
 	else
 	{
-		f[n]->_turn(-5, 1);
-
+		f[n]->_turn(5);
+		U.draw(*f[n]);
 	}
-	draw(*f[n]);
-}
-
-void shape::setN(int N)
-{
-	this->N = N;
-}
-
-void shape::ADD(basic& gg)
-{
-	f[N] = &gg;
-	N++;
 }

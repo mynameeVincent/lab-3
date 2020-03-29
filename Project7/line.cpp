@@ -2,7 +2,6 @@
 
 line::line(point p1, point p2)
 {
-	pin.setpen();
 	setNn(2);
 	p = new Point[4];
 	this->p[0].X = p1.getX();
@@ -15,7 +14,6 @@ line::line(point p1, point p2)
 
 line::line(int x1, int y1, int x2, int y2)
 {
-	pin.setpen();
 	setNn(2);
 	p = new Point[4];
 	this->p[0].X = x1;;

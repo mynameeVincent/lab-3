@@ -2,9 +2,6 @@
 
 rec::rec(point* i)
 {
-	pin.setpen(200, 0, 0);
-
-	pin.setpen();
 	setNn(4);
 	p = new Point[8];
 	this->p[0].X = i[0].getX();
@@ -32,9 +29,7 @@ rec::rec(point* i)
 
 rec::rec(int x, int y, int h, int w)
 {
-	pin.setpen();
-
-	setNn(4);
+	setNn(8);
 	p = new Point[8];
 	this->p[0].X = x;
 	this->p[0].Y = y;
@@ -44,8 +39,8 @@ rec::rec(int x, int y, int h, int w)
 	this->p[2].Y = y + h;
 	this->p[3].X = x;
 	this->p[3].Y = y + h;
-	this->ce.X = (this->p[0].X + this->p[1].X + this->p[2].X + this->p[3].X) / 4;
-	this->ce.Y = (this->p[0].Y + this->p[1].Y + this->p[2].Y + this->p[3].Y) / 4;
+	this->ce.X = (this->p[0].X + p[1].X) / 2;
+	this->ce.Y = (this->p[0].Y + p[3].Y) / 2;
 
 	p[4] = p[0];
 	p[5] = p[1];

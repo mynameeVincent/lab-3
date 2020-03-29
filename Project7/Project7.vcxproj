@@ -23,19 +23,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="agr.cpp" />
-    <ClCompile Include="color.cpp" />
     <ClCompile Include="fun.cpp" />
     <ClCompile Include="int.cpp" />
     <ClCompile Include="interf.cpp" />
     <ClCompile Include="interff.cpp" />
     <ClCompile Include="line.cpp" />
-    <ClCompile Include="NOW.cpp" />
     <ClCompile Include="rectangle.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="point.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="tretangle.cpp" />
-    <ClCompile Include="US.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

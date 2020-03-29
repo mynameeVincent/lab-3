@@ -2,6 +2,7 @@
 
 triangle::triangle(point p1, point p2, point p3)
 {
+	pin.setpen();
 	setNn(3);
 	p = new Point[6];
 	this->p[0].X = p1.getX();

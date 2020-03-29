@@ -133,7 +133,12 @@ void shap::rotate_(int n, bool rorl)
 {
 	if (rorl == 1)
 	{
-		U.rotate(*f[n], 5);
+		f[n]->_turn(5);
+		U.draw(*f[n]);
+	}
+	else
+	{
+		f[n]->_turn(5);
 		U.draw(*f[n]);
 	}
 }

@@ -8,16 +8,27 @@
 
 using namespace Gdiplus;
 using namespace std;
+
 class basic			
 {
 	double turn;
+	int Nn;
 public:
+	Point* p;
 	Point ce;
-	virtual void _draw(Pen& a, Graphics& graphics) = 0;
-	virtual void _hide() = 0;
-	virtual void _muve(int x, int y) = 0;
-	virtual void _muv(int x) = 0;
-	virtual void _turn(int x) = 0;
+	int getNn()
+	{
+		return Nn;
+	}
+	void setNn(int N)
+	{
+		this->Nn = N;
+	}
+	virtual void _draw(Pen& a, Graphics& graphics);
+	virtual void _hide();
+	virtual void _muve(int x, int y);
+	virtual void _muv(int x);
+	virtual void _turn(int x);
 	double getT()
 	{
 		return turn;
@@ -28,28 +39,8 @@ public:
 	}
 };
 
-//class basic2
-//{
-//	
-//	double turn;
-//public:
-//
-//	virtual void _turn(int x) = 0;
-//	double gett()
-//	{
-//		return turn;
-//	}
-//	void sett(double a)
-//	{
-//		turn = a;
-//	}
-//};
-
 class point : public basic
 {
-protected:
-	int x;
-	int y;
 public:
 	int getX();
 	int getY();
@@ -58,53 +49,29 @@ public:
 	point(int x = 0, int y = 0);
 	point(const point& a);
 	void operator = (const point& a);
-	void _muve(int x, int y);
-	void _muv(int x);
-	void _draw(Pen& a, Graphics& graphics);
-	virtual void _hide();
 
+	void _muve(int x, int y);
 	void _turn(int o){}
 };
 
-class rec : public point
+class rec:public basic
 {
-protected:
-	Point p[8];
 public:
 	rec(int x = 50, int y = 50, int h = 100, int w = 100);
 	rec(point* i);	
-	void _muve(int x, int y);
-	void _muv(int x);
-	void _hide();
-	void _draw(Pen& a, Graphics& graphics);
-	void _turn(int o);
 };
 
-class triangle : public point
+class triangle : public basic
 {
-protected:
-	Point p[6];
 public:
 	triangle(point p1, point p2, point p3);
-	void _muve(int x, int y);
-	void _muv(int x);
-	void _hide();
-	void _draw(Pen& a, Graphics& graphics);
-	void _turn(int o);
 };
 
-class line : public point
+class line : public basic
 {
-protected:
-	Point p[4];
 public:
 	line(point p1, point p2);
 	line(int x1, int y1, int x2, int y2);
-	void _muve(int x, int y);
-	void _muv(int x);
-	void _hide();
-	void _draw(Pen& a, Graphics& graphics);
-	void _turn(int o);
 };
 
 class shape
@@ -138,11 +105,6 @@ public:
 	void muve_(int n);
 };
 
-void bla_bla_bla();
-void mio(ULONG_PTR& gdiplusToken);
-point tur(point y, double x);
-
-
 class agr:public basic
 {
 protected:
@@ -157,8 +119,9 @@ public:
 	void _hide() override;
 	void _muve(int x, int y) override;
 	void _muv(int x) override;
-	void _turn(int x) override
-	{
-
-	}
+	void _turn(int x) override;
 };
+
+void bla_bla_bla();
+void mio(ULONG_PTR& gdiplusToken);
+point tur(point y, double x);

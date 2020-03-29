@@ -50,3 +50,13 @@ void agr::_muv(int x)
 		yo[f]->_muv(x);
 	}
 }
+void agr::_turn(int x)
+{
+	shap I;
+	for (int f = 0; f < M; f++)
+	{
+		yo[f]->ce = ce;
+		I.rotate_(f, x);
+	}
+
+}
